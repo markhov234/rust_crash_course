@@ -1,17 +1,9 @@
 #![deny(clippy::all)]
-mod arrays;
-mod print;
-mod strings;
-mod tuples;
-mod types;
-mod vars;
-mod vectors;
-fn main() {
-    // print::run();
-    // vars::run();
-    // types::run();
-    // strings::run();
-    // tuples::run();
-    // arrays::run();
-    vectors::run();
+
+use tokio::net::TcpListener;
+#[tokio::main]
+async fn main() {
+    let listener = TcpListener::bind("localhost:8080").await.unwrap();
+
+    let (socket, _addr) = listener.accept().await.unwrap();
 }
